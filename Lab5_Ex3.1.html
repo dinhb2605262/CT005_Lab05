@@ -1,95 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sản Phẩm Nội Dung Số - Lab05</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f7f6;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #1a73e8;
-            text-align: center;
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #1a73e8;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        p {
-            text-align: justify;
-        }
-        .media-box {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .media-box img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        footer {
-            margin-top: 40px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
-            font-size: 0.85em;
-            color: #666;
-            text-align: center;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sản phẩm Lab05 - Dương Nguyễn Công Dinh</title>
+  <style>
+    :root {
+      --ink: #15324b;
+      --muted: #587087;
+      --paper: #f4f8fc;
+      --line: #d8e5f0;
+      --accent: #2878b9;
+      --accent-dark: #185b91;
+      --blue: #397fae;
+      --shadow: 0 18px 50px rgba(31, 76, 112, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(40, 120, 185, 0.14), transparent 28rem),
+        radial-gradient(circle at 92% 18%, rgba(57, 127, 174, 0.12), transparent 26rem),
+        var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 64px 0 72px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font: 700 0.78rem/1.2 Arial, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .profile {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      margin: 0 0 18px;
+      border: 1px solid rgba(40, 120, 185, 0.2);
+      border-radius: 999px;
+      background: rgba(40, 120, 185, 0.06);
+      color: var(--ink);
+      font: 700 0.9rem/1.4 Arial, sans-serif;
+      box-shadow: 0 12px 20px rgba(40, 120, 185, 0.05);
+    }
+
+    .profile strong {
+      color: var(--accent-dark);
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 22px 0 42px;
+      color: var(--muted);
+      font: 1.08rem/1.65 Arial, sans-serif;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.55rem;
+    }
+
+    .label {
+      color: var(--blue);
+      font: 700 0.72rem/1.2 Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .image-wrap {
+      padding: 18px;
+      background: #edf4fa;
+    }
+
+    .pdf-body { padding: 18px; }
+
+    .pdf-frame {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      border-radius: 4px;
+      background: #edf4fa;
+    }
+
+    .image-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .video-body { padding: 18px; }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border-radius: 4px;
+      background: #15324b;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-note {
+      margin: 18px 0 20px;
+      color: var(--muted);
+      font: 0.95rem/1.55 Arial, sans-serif;
+    }
+
+    .watch-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 3px;
+      font: 700 0.9rem/1 Arial, sans-serif;
+      text-decoration: none;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .pdf-link { margin-top: 18px; }
+
+    .watch-link:hover,
+    .watch-link:focus-visible {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .watch-link:focus-visible { outline: 3px solid rgba(40, 120, 185, 0.35); outline-offset: 3px; }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font: 0.8rem/1.5 Arial, sans-serif;
+    }
+
+    @media (max-width: 760px) {
+      .page { padding-top: 40px; }
+      .content { grid-template-columns: 1fr; }
+      .panel-header { padding: 18px; }
+      .image-wrap, .pdf-body, .video-body { padding: 12px; }
+      .pdf-frame { height: 480px; }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>ỨNG DỤNG CÔNG NGHỆ SỐ TRONG HỌC TẬP</h1>
-        <p><strong>Mô tả ngắn:</strong> Trang web hiển thị các sản phẩm truyền thông và đa phương tiện được hoàn thiện trong Bài thực hành 05, nhằm giới thiệu lợi ích của công nghệ số đối với sinh viên đại học.</p>
-
-        <h2>1. Infographic: Lợi Ích Của Công Nghệ Số</h2>
-        <div class="media-box">
-            <img src="Lab05_Ex2.1.png" alt="Infographic Lợi ích công nghệ số">
-        </div>
-
-        <h2>2. Video Giới Thiệu Công Nghệ Số</h2>
-        <div class="media-box video-container">
-            <!-- Nhúng Video YouTube từ Nhiệm vụ 2.2 -->
-            <iframe src="https://www.youtube.com/embed/uVr07nnAJkE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <footer>
-            <p><strong>Ghi chú bản quyền & Nguồn khởi tạo:</strong> Mã nguồn HTML được hỗ trợ tạo bởi GitHub Copilot / Gemini AI. Infographic tạo bởi Canva AI (hình ảnh Unsplash CC0). Video biên tập bởi CapCut (tài liệu Pexels/FreeSound CC0).</p>
-        </footer>
+  <main class="page">
+    <p class="eyebrow">Lab05 · Ba sản phẩm</p>
+    <div class="profile" aria-label="Thông tin cá nhân">
+      <span>Tên: <strong>Dương Nguyễn Công Dinh</strong></span>
+      <span>|</span>
+      <span>Mã SV: <strong>b2605262</strong></span>
+      <span>|</span>
+      <span>Mã học phần: <strong>CT005</strong></span>
     </div>
+    <h1>Ba sản phẩm<br>của Lab05</h1>
+    <p class="intro">
+      Xem tài liệu PDF, khám phá infographic PNG và phát video YouTube trực tiếp
+      trên cùng một trang.
+    </p>
 
+    <section class="content" aria-label="Ba sản phẩm của Lab05">
+      <!-- Sản phẩm 1: PDF -->
+      <article class="panel">
+        <div class="panel-header">
+          <h2>PDF</h2>
+          <span class="label">Tài liệu</span>
+        </div>
+        <div class="pdf-body">
+          <iframe
+            class="pdf-frame"
+            src="Lab05_Ex1.2.pdf"
+            title="Tài liệu PDF Lab05"
+            loading="lazy">
+          </iframe>
+          <a class="watch-link pdf-link" href="Lab05_Ex1.2.pdf" target="_blank" rel="noopener noreferrer">
+            Mở PDF trong trình duyệt <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Sản phẩm 2: PNG -->
+      <article class="panel">
+        <div class="panel-header">
+          <h2>PNG</h2>
+          <span class="label">Hình ảnh</span>
+        </div>
+        <div class="image-wrap">
+          <img src="Lab05_Ex2.1.png" alt="Infographic của Lab05">
+        </div>
+      </article>
+
+      <!-- Sản phẩm 3: Video YouTube -->
+      <article class="panel">
+        <div class="panel-header">
+          <h2>Video</h2>
+          <span class="label">YouTube</span>
+        </div>
+        <div class="video-body">
+          <div class="video-frame">
+            <iframe 
+              src="https://www.youtube.com/embed/uVr07nnAJkE" 
+              title="YouTube video player" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="video-note">Video giới thiệu lợi ích công nghệ số thực hiện trong Lab05.</p>
+          <a class="watch-link" href="https://youtu.be/uVr07nnAJkE" target="_blank" rel="noopener noreferrer">
+            Xem trên YouTube <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <p>© 2026 Dương Nguyễn Công Dinh - Phát triển trang web với sự hỗ trợ của AI.</p>
+    </footer>
+  </main>
 </body>
 </html>
